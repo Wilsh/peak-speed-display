@@ -1,0 +1,7 @@
+[meta]
+name        = "Peak Speed Display"
+author      = "turbobear"
+category    = "Overlay"
+
+[script]
+dependencies = [ "VehicleState" ]
