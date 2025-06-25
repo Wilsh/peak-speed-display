@@ -1,16 +1,17 @@
 float topSpeed = 0;
 
-enum SpeedValue
-{
+enum SpeedValue {
 	FrontSpeed,
 	Velocity,
 }
 
-[Setting category="Speed" name="Value"]
-SpeedValue Setting_Speed_Value = SpeedValue::FrontSpeed;
+[Setting name="Speed Type"]
+SpeedValue Setting_Speed_Value = SpeedValue::Velocity;
+
+[Setting name="Peak Hold Time (milliseconds)" min=250 max=5000]
+uint64 waitTime = 2000;
 
 void Main() {
-    uint64 waitTime = 2000;
     uint64 startTime = Time::get_Now();
     uint64 endTime = Time::get_Now();
     float prevSpeed = 0;
