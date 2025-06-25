@@ -8,8 +8,16 @@ enum SpeedValue {
 [Setting name="Speed Type"]
 SpeedValue Setting_Speed_Value = SpeedValue::Velocity;
 
-[Setting name="Peak Hold Time (milliseconds)" min=250 max=5000]
-uint64 waitTime = 2000;
+[Setting name="Peak Hold Time (seconds)" min=0.25 step=0.25]
+float waitTimeSec = 2;
+
+[Setting hidden name="Peak Hold Time (ms)"]
+uint64 waitTime = uint64(waitTimeSec*1000);
+
+void OnSettingsChanged() {
+    if (waitTimeSec < 0) waitTimeSec = 0;
+    waitTime = uint64(waitTimeSec*1000);
+}
 
 void Main() {
     uint64 startTime = Time::get_Now();
